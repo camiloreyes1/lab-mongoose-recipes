@@ -50,10 +50,16 @@ mongoose
     data.forEach(element => console.log(element.title))   
   })
   .then(() => {
-    return Recipe.deleteOne({title: 'Carrot Cake' })
+    return Recipe.findOneAndUpdate({title: "Rigatoni alla Genovese"}, {duration: 100})
   })
   .then(() => {
-    return console.log("Deleted Carrot Cake")
+    return console.log("Success!!")
+  })
+  .then(() => {
+    return Recipe.deleteOne({title: 'Carrot Cake' })
+  })
+  .then((result) => {
+    return console.log("Deleted Carrot Cake", result)
   })
   .then(() => {
     return mongoose.connection.close()
